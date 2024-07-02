@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4efogy3qbmpx"]
+
+[ext_resource type="Texture2D" uid="uid://bti3euayvekpc" path="res://sprites/Sprites/10-Cannon/Cannon Ball.png" id="1_w3cft"]
+
+[sub_resource type="GDScript" id="GDScript_l2mjj"]
+script/source = "extends Area2D
+
+func _process(_delta):
+	position.x-=1.2
+
+
+
+func _on_body_entered(body):
+	if body.is_in_group(\"player\"):
+		body.hit()
+		queue_free()
+	
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ulldj"]
+radius = 11.0
+
+[node name="bullet" type="Area2D"]
+script = SubResource("GDScript_l2mjj")
+
+[node name="CannonBall" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_w3cft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(14, 10)
+shape = SubResource("CircleShape2D_ulldj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

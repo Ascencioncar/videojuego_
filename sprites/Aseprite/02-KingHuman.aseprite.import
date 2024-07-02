@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bj5efgwts5bfi"
+path="res://.godot/imported/02-KingHuman.aseprite-023dfcbcd1da436ebcbac604b45cb731.res"
+
+[deps]
+
+source_file="res://sprites/Aseprite/02-KingHuman.aseprite"
+dest_files=["res://.godot/imported/02-KingHuman.aseprite-023dfcbcd1da436ebcbac604b45cb731.res"]
+
+[params]
+

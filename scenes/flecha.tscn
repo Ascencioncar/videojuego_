@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://2gnbamq7snbj"]
+
+[ext_resource type="Script" path="res://scripts/flecha.gd" id="1_5c8se"]
+[ext_resource type="Texture2D" uid="uid://c233e02kycmqf" path="res://sprites/Sprites/demonio prueba/flecha.png" id="2_wxess"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmndx"]
+size = Vector2(34, 7)
+
+[node name="flecha" type="Area2D"]
+script = ExtResource("1_5c8se")
+
+[node name="flecha" type="Sprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_wxess")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_jmndx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

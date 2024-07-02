@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b83tb6s3tnk7c"
+path="res://.godot/imported/07-KingPig.aseprite-37a2b912fd874f9c764d5b596ad4fa30.res"
+
+[deps]
+
+source_file="res://sprites/Aseprite/07-KingPig.aseprite"
+dest_files=["res://.godot/imported/07-KingPig.aseprite-37a2b912fd874f9c764d5b596ad4fa30.res"]
+
+[params]
+

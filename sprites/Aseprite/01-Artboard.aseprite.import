@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://l1ui6ff0u3af"
+path="res://.godot/imported/01-Artboard.aseprite-f4fd6d91b6af9687f1ebbfa1cca54215.res"
+
+[deps]
+
+source_file="res://sprites/Aseprite/01-Artboard.aseprite"
+dest_files=["res://.godot/imported/01-Artboard.aseprite-f4fd6d91b6af9687f1ebbfa1cca54215.res"]
+
+[params]
+

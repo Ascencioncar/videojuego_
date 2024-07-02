@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://folm8pwuq8rn"]
+
+[ext_resource type="Texture2D" uid="uid://bpn65jpv3j1rl" path="res://sprites/Sprites/12-Live and Coins/Big Heart Idle (18x14).png" id="1_bx3ro"]
+[ext_resource type="Script" path="res://scripts/powerup_vida.gd" id="1_fj64n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06thr"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfhcc"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r3do"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr11d"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iloxj"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frwty"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgdsk"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e27w3"]
+atlas = ExtResource("1_bx3ro")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61wxi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06thr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfhcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r3do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr11d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iloxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frwty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgdsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e27w3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgcpa"]
+radius = 15.0
+
+[node name="powerup vida" type="Area2D"]
+script = ExtResource("1_fj64n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_61wxi")
+autoplay = "default"
+frame_progress = 0.956766
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("CircleShape2D_bgcpa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

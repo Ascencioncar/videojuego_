@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cm74bx7xsua4h"
+path="res://.godot/imported/06-PigHide.aseprite-892db26ec07c6e17a16280cac10e1692.res"
+
+[deps]
+
+source_file="res://sprites/Aseprite/06-PigHide.aseprite"
+dest_files=["res://.godot/imported/06-PigHide.aseprite-892db26ec07c6e17a16280cac10e1692.res"]
+
+[params]
+

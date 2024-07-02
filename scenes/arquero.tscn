@@ -1,0 +1,142 @@
+[gd_scene load_steps=20 format=3 uid="uid://ceind2jo58lgr"]
+
+[ext_resource type="Script" path="res://scripts/arquero.gd" id="1_5pluj"]
+[ext_resource type="Texture2D" uid="uid://dylcb0pvxrl7x" path="res://sprites/Sprites/demonio prueba/Archer-atk-spritesheet (1).png" id="1_f521a"]
+[ext_resource type="PackedScene" uid="uid://2gnbamq7snbj" path="res://scenes/flecha.tscn" id="2_a0821"]
+[ext_resource type="Texture2D" uid="uid://do1r6dmp2vkx5" path="res://sprites/Sprites/demonio prueba/Archer-Idle-spritesheet.png" id="2_yfrxh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq1uo"]
+atlas = ExtResource("1_f521a")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4aymw"]
+atlas = ExtResource("1_f521a")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy2ot"]
+atlas = ExtResource("1_f521a")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwobi"]
+atlas = ExtResource("1_f521a")
+region = Rect2(0, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uta7e"]
+atlas = ExtResource("1_f521a")
+region = Rect2(38, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqilq"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ctiu"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhoau"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk0ta"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(0, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bkcv"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(38, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wofr2"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(76, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4wbw"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(0, 76, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgvqr"]
+atlas = ExtResource("2_yfrxh")
+region = Rect2(38, 76, 38, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibxgb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq1uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4aymw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy2ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwobi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uta7e")
+}],
+"loop": true,
+"name": &"atack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqilq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ctiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhoau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk0ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bkcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wofr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4wbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgvqr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psahr"]
+size = Vector2(15.2, 24.4)
+
+[node name="Arquero" type="StaticBody2D"]
+script = ExtResource("1_5pluj")
+flecha = ExtResource("2_a0821")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_ibxgb")
+animation = &"atack"
+frame = 4
+frame_progress = 0.7112
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.38419e-07, 6.5)
+scale = Vector2(2.5, 2.5)
+shape = SubResource("RectangleShape2D_psahr")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(29, 7)
+target_position = Vector2(308, 0)
+
+[node name="spawflechas" type="Marker2D" parent="."]
+position = Vector2(29, 7)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
