@@ -332,10 +332,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ctj6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apxda")
 }],
 "loop": false,
 "name": &"atack3",
-"speed": 12.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -524,23 +527,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28fq3"]
-size = Vector2(23, 47.25)
+size = Vector2(31, 47.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8dpv"]
-size = Vector2(20, 12.5)
+size = Vector2(20, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tlwsx"]
-size = Vector2(20, 56)
+size = Vector2(20, 59)
 
 [node name="ragnar" type="CharacterBody2D" groups=["player"]]
 position = Vector2(15, 0)
 script = ExtResource("1_bb68w")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(-15, 0)
 sprite_frames = SubResource("SpriteFrames_owqyw")
-animation = &"recibir flecha"
-frame = 8
+animation = &"atack"
+frame = 4
 frame_progress = 1.0
 offset = Vector2(15, 0)
 metadata/_aseprite_wizard_config_ = {
@@ -557,19 +559,20 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "0117f8bdff03cf1d6d2f899fb4fc8f72"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-15.5, 22.375)
+[node name="CollisionRagnar" type="CollisionShape2D" parent="."]
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_28fq3")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(74, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(10, 16)
+[node name="atack1y2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-102, 12)
 shape = SubResource("RectangleShape2D_d8dpv")
 disabled = true
 
 [node name="uppercut" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(11, 9)
+position = Vector2(-102, 13)
 shape = SubResource("RectangleShape2D_tlwsx")
 disabled = true
 
@@ -579,3 +582,5 @@ volume_db = -3.853
 
 [node name="jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_it4ub")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

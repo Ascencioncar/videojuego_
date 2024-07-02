@@ -8,7 +8,7 @@ var cont_jump:int=0
 var max_jump:int=2
 
 func _ready():
-	$Area2D/CollisionShape2D.disabled =true
+	$Area2D/atack1y2.disabled =true
 	
 
 func _physics_process(delta):
@@ -16,15 +16,20 @@ func _physics_process(delta):
 	velocity.y +=gravedad*delta
 	if !hitplayer:
 		if Input.is_action_pressed("ui_right"):
-			$CollisionShape2D.position.x= -17.5
-			$Area2D.position.x = 0
+			$anim.position.x=0
 			velocity.x = velocidad
 			$anim.flip_h=false
+			$CollisionRagnar.position.x=0
+			$Area2D/atack1y2.position.x=-45
+			$Area2D/uppercut.position.x=-45
+			
+			
 		elif Input.is_action_pressed("ui_left"):
-			$CollisionShape2D.position.x= 17
-			$Area2D.position.x = -16
+			$anim.position.x=-31
 			velocity.x = -velocidad
 			$anim.flip_h=true
+			$Area2D/atack1y2.position.x=-102
+			$Area2D/uppercut.position.x=-102
 		else:
 			velocity.x=0
 					
@@ -42,7 +47,7 @@ func _physics_process(delta):
 				velocity.y = -salto
 				
 			if Input.is_action_just_released("saltar"):
-				velocity.y+= 5000*delta
+				velocity.y+= 4500*delta
 		
 		animaciones()
 	
@@ -50,35 +55,36 @@ func _physics_process(delta):
 	
 	
 func _input(_event):
-	if Input.is_action_just_pressed("atacar") and !hitplayer:
-		$atack.play()
-		set_physics_process(false)
-		$anim.play("atack")	
-		$Area2D/CollisionShape2D.disabled=false
-		await $anim.animation_finished
-		$Area2D/CollisionShape2D.disabled=true
-		set_physics_process(true)
-		print("golpe1")
+	if is_on_floor():
+		if Input.is_action_just_pressed("atacar") and !hitplayer:
+			$atack.play()
+			set_physics_process(false)
+			$anim.play("atack")	
+			$Area2D/atack1y2.disabled=false
+			await $anim.animation_finished
+			$Area2D/atack1y2.disabled=true
+			set_physics_process(true)
+			
+			
+		if Input.is_action_just_pressed("atack2") and !hitplayer:
+			$atack.play()
+			set_physics_process(false)
+			$anim.play("atack2")	
+			$Area2D/atack1y2.disabled=false
+			await $anim.animation_finished
+			$Area2D/atack1y2.disabled=true
+			set_physics_process(true)
+			
+			
+		if Input.is_action_just_pressed("atack3") and !hitplayer:
+			set_physics_process(false)
+			$atack.play()
+			$anim.play("atack3")	
+			$Area2D/uppercut.disabled=false
+			await $anim.animation_finished
+			$Area2D/uppercut.disabled=true
+			set_physics_process(true)
 		
-	if Input.is_action_just_pressed("atack2") and !hitplayer:
-		$atack.play()
-		set_physics_process(false)
-		$anim.play("atack2")	
-		$Area2D/CollisionShape2D.disabled=false
-		await $anim.animation_finished
-		$Area2D/CollisionShape2D.disabled=true
-		set_physics_process(true)
-		print("golpe2")	
-		
-	if Input.is_action_just_pressed("atack3") and !hitplayer:
-		set_physics_process(false)
-		$atack.play()
-		$anim.play("atack3")	
-		$Area2D/uppercut.disabled=false
-		await $anim.animation_finished
-		$Area2D/uppercut.disabled=true
-		set_physics_process(true)
-		print("golpe3")	
 	
 
 func animaciones():
@@ -96,15 +102,12 @@ func animaciones():
 func hit():
 	hitplayer=true
 	velocity= Vector2.ZERO
-	
 	if !$anim.flip_h:
-		velocity= Vector2(-50,0)
+		velocity= Vector2(10,0)
 	else:
-		velocity= Vector2(50,0)
+		velocity= Vector2(10,0)
 	$anim.play("recibir flecha")
-	$CollisionShape2D.disabled=true
 	await $anim.animation_finished
-	$CollisionShape2D.disabled=false
 	velocity= Vector2.ZERO
 	hitplayer=false
 	
@@ -112,17 +115,14 @@ func hit():
 	
 	
 func dead():
-		$CollisionShape2D.disabled=true
+		$CollisionRagnar.disabled=true
 		set_physics_process(false)
 		$anim.play("dead")
 		await $anim.animation_finished
 		#queue_free() 
-	
-func recuperarvida():
-	set_physics_process(false)
-	
-
-
-
+		
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("enemie"):
+		body.hit()
 	
 	
