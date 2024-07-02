@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://ceind2jo58lgr"]
+[gd_scene load_steps=28 format=3 uid="uid://ceind2jo58lgr"]
 
 [ext_resource type="Script" path="res://scripts/arquero.gd" id="1_5pluj"]
 [ext_resource type="Texture2D" uid="uid://dylcb0pvxrl7x" path="res://sprites/Sprites/demonio prueba/Archer-atk-spritesheet (1).png" id="1_f521a"]
 [ext_resource type="PackedScene" uid="uid://2gnbamq7snbj" path="res://scenes/flecha.tscn" id="2_a0821"]
 [ext_resource type="Texture2D" uid="uid://do1r6dmp2vkx5" path="res://sprites/Sprites/demonio prueba/Archer-Idle-spritesheet.png" id="2_yfrxh"]
+[ext_resource type="PackedScene" uid="uid://b065knnykxxs8" path="res://scenes/flechaiz.tscn" id="3_p36mk"]
 [ext_resource type="Texture2D" uid="uid://cku33bm6i38bg" path="res://sprites/Sprites/demonio prueba/Archer-hit-spritesheet.png" id="4_wy6r5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44fro"]
@@ -163,11 +164,12 @@ size = Vector2(20, 43.5)
 [node name="arquero" type="CharacterBody2D" groups=["enemie"]]
 script = ExtResource("1_5pluj")
 flecha = ExtResource("2_a0821")
+flechaiz = ExtResource("3_p36mk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_78e65")
-animation = &"idle"
+animation = &"atack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5.75)
@@ -175,6 +177,9 @@ shape = SubResource("RectangleShape2D_hhwx4")
 
 [node name="spawflechas" type="Marker2D" parent="."]
 position = Vector2(18, 5)
+
+[node name="spawflechasiz" type="Marker2D" parent="."]
+position = Vector2(-27, 5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(38, 0)
