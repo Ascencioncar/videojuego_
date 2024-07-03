@@ -1,9 +1,12 @@
-[gd_scene load_steps=75 format=3 uid="uid://d3tkwd3tb66ex"]
+[gd_scene load_steps=76 format=3 uid="uid://d3tkwd3tb66ex"]
 
 [ext_resource type="Texture2D" uid="uid://ccryhxbaf71h3" path="res://sprites/Sprites/ragnar imagenes/ragnar.png" id="1_72hyv"]
 [ext_resource type="Script" path="res://scripts/ragnar.gd" id="1_bb68w"]
 [ext_resource type="AudioStream" uid="uid://dqd51do185fj" path="res://sounds/Player/Attack.wav" id="3_bjsug"]
 [ext_resource type="AudioStream" uid="uid://bpmrhbyriqcmx" path="res://sounds/Player/double jump.wav" id="4_it4ub"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3yh4"]
+size = Vector2(31, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_igqxa"]
 atlas = ExtResource("1_72hyv")
@@ -527,7 +530,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28fq3"]
-size = Vector2(31, 47.25)
+size = Vector2(31, 44.625)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d8dpv"]
 size = Vector2(20, 9)
@@ -538,6 +541,10 @@ size = Vector2(20, 59)
 [node name="ragnar" type="CharacterBody2D" groups=["player"]]
 position = Vector2(15, 0)
 script = ExtResource("1_bb68w")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 45)
+shape = SubResource("RectangleShape2D_p3yh4")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_owqyw")
@@ -560,7 +567,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "0117f8bdff03cf1d6d2f899fb4fc8f72"
 
 [node name="CollisionRagnar" type="CollisionShape2D" parent="."]
-position = Vector2(0, 23)
+position = Vector2(0, 21.6875)
 shape = SubResource("RectangleShape2D_28fq3")
 
 [node name="Area2D" type="Area2D" parent="."]

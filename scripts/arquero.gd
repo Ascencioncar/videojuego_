@@ -61,7 +61,6 @@ func hit():
 	hitplayer=false
 	
 func _on_timer_timeout():
-	#derecha
 	disparar=true
 	
 func dead():

@@ -182,15 +182,19 @@ position = Vector2(18, 5)
 position = Vector2(-27, 5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(38, 0)
+position = Vector2(43, 0)
 target_position = Vector2(187, 0)
 
 [node name="izquierda" type="RayCast2D" parent="."]
-position = Vector2(-44, 1)
+position = Vector2(-53, 1)
 target_position = Vector2(-153, 0)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 autostart = true
+
+[node name="pruebacombo" type="RayCast2D" parent="."]
+position = Vector2(31, 18)
+target_position = Vector2(55, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

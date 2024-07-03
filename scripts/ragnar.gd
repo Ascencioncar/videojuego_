@@ -85,6 +85,7 @@ func _input(_event):
 			$Area2D/uppercut.disabled=true
 			set_physics_process(true)
 		
+			
 	
 
 func animaciones():
@@ -103,14 +104,13 @@ func hit():
 	hitplayer=true
 	velocity= Vector2.ZERO
 	if !$anim.flip_h:
-		velocity= Vector2(10,0)
+		velocity= Vector2(0,0)
 	else:
-		velocity= Vector2(10,0)
+		velocity= Vector2(0,0)
 	$anim.play("recibir flecha")
 	await $anim.animation_finished
 	velocity= Vector2.ZERO
 	hitplayer=false
-	
 	get_tree().get_nodes_in_group("barravidaplayer")[0].DisminuirVida(30)
 	
 	
@@ -124,5 +124,5 @@ func dead():
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("enemie"):
 		body.hit()
-	
-	
+
+
