@@ -548,9 +548,7 @@ shape = SubResource("RectangleShape2D_p3yh4")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_owqyw")
-animation = &"atack"
-frame = 4
-frame_progress = 1.0
+animation = &"recibir flecha"
 offset = Vector2(15, 0)
 metadata/_aseprite_wizard_config_ = {
 "layer": "",

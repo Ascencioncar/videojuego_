@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://ceind2jo58lgr"]
+[gd_scene load_steps=29 format=3 uid="uid://ceind2jo58lgr"]
 
 [ext_resource type="Script" path="res://scripts/arquero.gd" id="1_5pluj"]
 [ext_resource type="Texture2D" uid="uid://dylcb0pvxrl7x" path="res://sprites/Sprites/demonio prueba/Archer-atk-spritesheet (1).png" id="1_f521a"]
 [ext_resource type="PackedScene" uid="uid://2gnbamq7snbj" path="res://scenes/flecha.tscn" id="2_a0821"]
 [ext_resource type="Texture2D" uid="uid://do1r6dmp2vkx5" path="res://sprites/Sprites/demonio prueba/Archer-Idle-spritesheet.png" id="2_yfrxh"]
 [ext_resource type="PackedScene" uid="uid://b065knnykxxs8" path="res://scenes/flechaiz.tscn" id="3_p36mk"]
+[ext_resource type="PackedScene" uid="uid://dno18ti0pv23j" path="res://scenes/flechacombo.tscn" id="4_4g5sq"]
 [ext_resource type="Texture2D" uid="uid://cku33bm6i38bg" path="res://sprites/Sprites/demonio prueba/Archer-hit-spritesheet.png" id="4_wy6r5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44fro"]
@@ -100,8 +101,11 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sv0q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44fro")
 }],
-"loop": true,
+"loop": false,
 "name": &"atack",
 "speed": 3.0
 }, {
@@ -165,6 +169,16 @@ size = Vector2(20, 43.5)
 script = ExtResource("1_5pluj")
 flecha = ExtResource("2_a0821")
 flechaiz = ExtResource("3_p36mk")
+flechcombo = ExtResource("4_4g5sq")
+
+[node name="combo" type="Marker2D" parent="."]
+position = Vector2(15, -179)
+
+[node name="combo1" type="Marker2D" parent="."]
+position = Vector2(32, -179)
+
+[node name="combo2" type="Marker2D" parent="."]
+position = Vector2(50, -179)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
@@ -182,19 +196,21 @@ position = Vector2(18, 5)
 position = Vector2(-27, 5)
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(43, 0)
+position = Vector2(57, 1)
 target_position = Vector2(187, 0)
 
 [node name="izquierda" type="RayCast2D" parent="."]
 position = Vector2(-53, 1)
 target_position = Vector2(-153, 0)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 1.5
-autostart = true
-
 [node name="pruebacombo" type="RayCast2D" parent="."]
-position = Vector2(31, 18)
-target_position = Vector2(55, 0)
+position = Vector2(38, 32)
+rotation = -0.0200942
+scale = Vector2(31.2655, 4.19334)
+target_position = Vector2(0, -3.4)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.336
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
