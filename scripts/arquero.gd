@@ -38,7 +38,7 @@ func _physics_process(delta):
 			var obj = $pruebacombo.get_collider()
 			if obj.is_in_group("player") and combo:
 				combo = false
-				#$AnimatedSprite2D.play("atack")
+				$AnimatedSprite2D.play("atack")
 				comboarquero()
 				
 		else:
@@ -59,26 +59,26 @@ func shootizquierda():
 	get_parent().add_child(newflecha)
 
 func comboarquero():
-		velocity= Vector2(-50,0)
+		velocity= Vector2(-50,-250)
 		var newflecha = flechcombo.instantiate()
-		newflecha.global_position =$combo.global_position
+		newflecha.global_position =$"combo_derecha/combo".global_position
 		get_parent().add_child(newflecha)
 		
 		var newflecha1 = flechcombo.instantiate()
-		newflecha1.global_position = $combo1.global_position
+		newflecha1.global_position = $combo_derecha/combo1.global_position
 		get_parent().add_child(newflecha1)
 		
 		var newflecha2 = flechcombo.instantiate()
-		newflecha2.global_position = $combo2.global_position
+		newflecha2.global_position = $combo_derecha/combo2.global_position
 		get_parent().add_child(newflecha2)
 		
 func hit():
 	hitplayer=true
 	velocity= Vector2.ZERO
 	if !$AnimatedSprite2D.flip_h:
-		velocity= Vector2(0,-100)
+		velocity= Vector2(-100,-100)
 	else:
-		velocity= Vector2(0,-100)
+		velocity= Vector2(100,-100)
 	$AnimatedSprite2D.play("hit")
 	await $AnimatedSprite2D.animation_finished
 	velocity= Vector2.ZERO

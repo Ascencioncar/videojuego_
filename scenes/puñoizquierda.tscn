@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctbdx1b11a6j6"]
+
+[ext_resource type="Texture2D" uid="uid://bkic41nyeh602" path="res://sprites/Sprites/ragnar imagenes/puño fuego.png" id="1_ru6el"]
+[ext_resource type="Script" path="res://scripts/puñoizquierda.gd" id="1_scbyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b50b"]
+size = Vector2(27, 16)
+
+[node name="puñoizquierda" type="Area2D"]
+script = ExtResource("1_scbyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5708
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_ru6el")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.5, -1)
+shape = SubResource("RectangleShape2D_6b50b")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

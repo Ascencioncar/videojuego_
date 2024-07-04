@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ceind2jo58lgr"]
+[gd_scene load_steps=37 format=3 uid="uid://ceind2jo58lgr"]
 
 [ext_resource type="Script" path="res://scripts/arquero.gd" id="1_5pluj"]
 [ext_resource type="Texture2D" uid="uid://dylcb0pvxrl7x" path="res://sprites/Sprites/demonio prueba/Archer-atk-spritesheet (1).png" id="1_f521a"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b065knnykxxs8" path="res://scenes/flechaiz.tscn" id="3_p36mk"]
 [ext_resource type="PackedScene" uid="uid://dno18ti0pv23j" path="res://scenes/flechacombo.tscn" id="4_4g5sq"]
 [ext_resource type="Texture2D" uid="uid://cku33bm6i38bg" path="res://sprites/Sprites/demonio prueba/Archer-hit-spritesheet.png" id="4_wy6r5"]
+[ext_resource type="Texture2D" uid="uid://c1x3qsbns7ubw" path="res://sprites/Sprites/demonio prueba/Archer-walk-spritesheet.png" id="8_tto8y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_44fro"]
 atlas = ExtResource("1_f521a")
@@ -84,6 +85,34 @@ region = Rect2(0, 76, 38, 38)
 atlas = ExtResource("2_yfrxh")
 region = Rect2(38, 76, 38, 38)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss41p"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(0, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mu68"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(38, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ykmst"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(76, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msisv"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(0, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r72kh"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(38, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7n4u0"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(76, 38, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6cfr4"]
+atlas = ExtResource("8_tto8y")
+region = Rect2(0, 76, 38, 38)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_78e65"]
 animations = [{
 "frames": [{
@@ -160,6 +189,32 @@ animations = [{
 "loop": false,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss41p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mu68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ykmst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msisv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r72kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7n4u0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6cfr4")
+}],
+"loop": false,
+"name": &"walk",
+"speed": 7.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hhwx4"]
@@ -171,19 +226,10 @@ flecha = ExtResource("2_a0821")
 flechaiz = ExtResource("3_p36mk")
 flechcombo = ExtResource("4_4g5sq")
 
-[node name="combo" type="Marker2D" parent="."]
-position = Vector2(15, -179)
-
-[node name="combo1" type="Marker2D" parent="."]
-position = Vector2(32, -179)
-
-[node name="combo2" type="Marker2D" parent="."]
-position = Vector2(50, -179)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_78e65")
-animation = &"atack"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 5.75)
@@ -210,7 +256,18 @@ scale = Vector2(31.2655, 4.19334)
 target_position = Vector2(0, -3.4)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 1.336
+wait_time = 2.0
 autostart = true
+
+[node name="combo_derecha" type="Node2D" parent="."]
+
+[node name="combo" type="Marker2D" parent="combo_derecha"]
+position = Vector2(15, -179)
+
+[node name="combo1" type="Marker2D" parent="combo_derecha"]
+position = Vector2(32, -179)
+
+[node name="combo2" type="Marker2D" parent="combo_derecha"]
+position = Vector2(50, -179)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
